@@ -121,6 +121,7 @@ class ExpandableTextState extends State<ExpandableText>
 
   void _toggleExpanded() {
     if (widget.onExpandTap != null) {
+      widget.onExpandTap!.call();
       return;
     }
     final toggledExpanded = !_expanded;
