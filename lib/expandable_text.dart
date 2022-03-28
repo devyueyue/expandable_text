@@ -23,6 +23,7 @@ class ExpandableText extends StatefulWidget {
     this.prefixText,
     this.prefixStyle,
     this.onPrefixTap,
+    this.onExpandTap,
     this.urlStyle,
     this.onUrlTap,
     this.hashtagStyle,
@@ -54,6 +55,7 @@ class ExpandableText extends StatefulWidget {
   final String? prefixText;
   final TextStyle? prefixStyle;
   final VoidCallback? onPrefixTap;
+  final VoidCallback? onExpandTap;
   final TextStyle? urlStyle;
   final StringCallback? onUrlTap;
   final TextStyle? hashtagStyle;
@@ -118,6 +120,9 @@ class ExpandableTextState extends State<ExpandableText>
   }
 
   void _toggleExpanded() {
+    if (widget.onExpandTap != null) {
+      return;
+    }
     final toggledExpanded = !_expanded;
 
     setState(() => _expanded = toggledExpanded);
